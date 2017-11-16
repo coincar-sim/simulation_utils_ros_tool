@@ -1,0 +1,20 @@
+<launch>
+		
+		<arg name="publisher_name" />
+		<arg name="nav_sat_fix_topic" />
+		<arg name="frame_lat" />
+		<arg name="frame_lon" />
+		<arg name="frame_alt" />
+		<arg name="tf_frame_id" />
+		<arg name="publishing_frequency" />
+
+		<node pkg="simulation_utils_ros_tool" type="static_nav_sat_fix_publisher.py" name="$(arg publisher_name)" output="screen">
+				<param name="frame_lat" value="$(arg frame_lat)" />
+				<param name="frame_lon" value="$(arg frame_lon)" />
+				<param name="frame_alt" value="$(arg frame_alt)" />
+				<param name="tf_frame_id" value="$(arg tf_frame_id)" />
+				<param name="publishing_frequency" value="$(arg publishing_frequency)" />
+				<param name="nav_sat_fix_topic" value="$(arg nav_sat_fix_topic)" />
+		</node>
+
+</launch>

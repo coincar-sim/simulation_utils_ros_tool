@@ -1,0 +1,27 @@
+<launch>
+<!-- Static NavSatFix Publisher, using the command line tool rostopic -->
+
+	<arg name="publisher_name" />
+	<arg name="nav_sat_fix_topic" />
+	<arg name="frame_lat" />
+	<arg name="frame_lon" />
+	<arg name="frame_alt" />
+	<arg name="tf_frame_id" />
+	<arg name="publishing_frequency" />
+
+<!-- The argument over multiple lines must not be indented! -->
+<node pkg="rostopic" type="rostopic" name="$(arg publisher_name)" args="pub -r $(arg publishing_frequency)
+$(arg nav_sat_fix_topic)
+sensor_msgs/NavSatFix
+'{'\
+'header: {seq: 0, stamp: 0, frame_id: $(arg tf_frame_id)}, '\
+'status: {status: -1, service: 1}, '\
+'latitude: $(arg frame_lat) ,'\
+'longitude: $(arg frame_lon) ,'\
+'altitude: $(arg frame_alt) ,'\
+'position_covariance: [0,0,0,0,0,0,0,0,0], '\
+'position_covariance_type: 0 '\
+'}'" output="screen">
+</node>
+
+</launch>

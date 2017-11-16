@@ -1,0 +1,18 @@
+<launch>
+
+		<arg name="tf_publisher_name" />
+		<arg name="child_lat" />
+		<arg name="child_lon" />
+		<arg name="tf_frame_id_utm_base" />
+		<arg name="tf_frame_id_child" />
+		<arg name="publishing_frequency" />
+
+		<node pkg="simulation_utils_ros_tool" type="static_utm_tf_publisher.py" name="$(arg tf_publisher_name)" output="screen">
+				<param name="child_lat" value="$(arg child_lat)" />
+				<param name="child_lon" value="$(arg child_lon)" />
+				<param name="tf_frame_id_utm_base" value="$(arg tf_frame_id_utm_base)" />
+				<param name="tf_frame_id_child" value="$(arg tf_frame_id_child)" />
+				<param name="publishing_frequency" value="$(arg publishing_frequency)" />
+		</node>
+
+</launch>

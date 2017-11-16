@@ -1,0 +1,27 @@
+<launch>
+<!-- Static NavSatFix Publisher, using the command line tool rostopic -->
+
+	<arg name="publisher_name" />
+	<arg name="topic" />
+	<arg name="px" default="0" />
+	<arg name="py" default="0" />
+	<arg name="pz" default="0" />
+	<arg name="qx" default="0" />
+	<arg name="qy" default="0" />
+	<arg name="qz" default="0" />
+	<arg name="qw" default="1" />
+	<arg name="tf_frame_id" />
+	<arg name="publishing_frequency" />
+
+<!-- The argument over multiple lines must not be indented! -->
+<node pkg="rostopic" type="rostopic" name="$(arg publisher_name)" args="pub -r $(arg publishing_frequency)
+$(arg topic)
+geometry_msgs/PoseStamped
+'{'\
+'header: {seq: 0, stamp: 0, frame_id: $(arg tf_frame_id)}, '\
+'pose: '\
+'{position: {x: $(arg px), y: $(arg py), z: $(arg pz)}, '\
+'orientation: {x: $(arg qx), y: $(arg qy), z: $(arg qz), w: $(arg qw)}}}'" output="screen">
+</node>
+
+</launch>
