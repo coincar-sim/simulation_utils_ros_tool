@@ -1,4 +1,4 @@
-#pkg_version=2.0.5
+set(MRT_PKG_VERSION 2.2)
 # Modify only if you know what you are doing!
 cmake_minimum_required(VERSION 2.8.12)
 project(simulation_utils_ros_tool)
@@ -46,11 +46,10 @@ if (ROS_GENERATE_MESSAGES)
 endif()
 
 # Generate dynamic reconfigure options
-file(GLOB PARAMS_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "cfg/*.params")
-file(GLOB CFG_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "cfg/*cfg")
-file(GLOB SRV_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "srv/*.srv")
-if (PARAMS_FILES OR CFG_FILES)
-    generate_ros_parameter_files(${PARAMS_FILES} ${CFG_FILES})
+file(GLOB PARAMS_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "cfg/*.params" "cfg/*.cfg" "cfg/*.mrtcfg" "cfg/*.rosif")
+if (PARAMS_FILES)
+    generate_ros_parameter_files(${PARAMS_FILES})
+    generate_ros_interface_files(${PARAMS_FILES})
 endif ()
 
 ###################################
