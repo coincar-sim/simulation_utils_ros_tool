@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>simulation_utils_ros_tool</name>
-  <version>0.0.1</version>
+  <version>1.0.0</version>
   <description>Excecutables for the simulation framework</description>
 
-  <license>contact-the-maintainer</license>
+  <license>BSD</license>
   <maintainer email="maximilian.naumann@kit.edu">Maximilian Naumann</maintainer>
 
   <buildtool_depend>catkin</buildtool_depend>
